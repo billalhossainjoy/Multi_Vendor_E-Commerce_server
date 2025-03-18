@@ -1,6 +1,5 @@
 import {Response} from "express";
 
-
 export class ErrorApi extends Error {
     public status : number;
     public message : string;

@@ -5,6 +5,8 @@ import http from 'http'
 import ErrorHandler from "./middleware/ErrorHandler";
 import NotFoundHandler from "./middleware/NotFound";
 import {Server} from "node:http";
+import authRouter from "./app/auth/auth.router";
+import userRouter from "./app/user/user.router";
 
 class App {
 	protected app: Express;
@@ -14,32 +16,41 @@ class App {
 		this.app = express()
 		this.server = http.createServer(this.app)
 		this.middleware()
-		this.router()
+		this.routes()
 		this.errorHandler()
 	}
-
 
 	middleware() {
 		// cors origin
 		this.app.use(cors(
 			{
-				origin: "*",
+				origin: ["http://localhost:5173"],
 				credentials: true,
 				methods:["GET", "POST", "PUT", "DELETE"]
 			}
 		))
 
-		this.app.use(express.json({limit: "10mb"}))
-		this.app.use(express.urlencoded({ extended: true }))
+		this.app.use(express.json({limit: "2mb"}))
+		this.app.use(express.urlencoded({ extended: false, limit: "5mb" }))
 		this.app.use(cookieParser())
 	}
 
-	router() {
+	routes() {
+		this.app.use("/api/v1/auth", authRouter)
+		this.app.use("/api/v1/user", userRouter)
 	}
 
 	errorHandler() {
 		this.app.use(NotFoundHandler);
 		this.app.use(ErrorHandler);
+	}
+
+	handleErrors() {
+		process.on("unhandledRejection", (err ) => {
+			console.log(`Shutting down the server for ${(err as any).message}`)
+
+			this.server.close(() => process.exit(1))
+		})
 	}
 
 }
