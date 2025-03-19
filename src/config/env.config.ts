@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config();
+import "../config/config"
 
 const env = {
   MONGO_URI: process.env.MONGO_URI!,

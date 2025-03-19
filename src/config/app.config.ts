@@ -1,6 +1,4 @@
-import dotenv from "dotenv";
-
-dotenv.config();
+import "../config/config"
 
 const AppConfig = {
 	PORT: process.env.PORT || 5000,

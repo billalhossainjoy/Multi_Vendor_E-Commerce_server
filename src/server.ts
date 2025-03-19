@@ -8,7 +8,7 @@ class Server extends App {
         .then(() => {
           this.server.listen(appConfig.PORT, () => console.log(`Server running on http://localhost:${appConfig.PORT}`))
         })
-        .catch((err) => process.exit(1))
+        .catch((err) => console.log(err))
   }
 }
 
