@@ -1,5 +1,5 @@
 import {NextFunction, Request, response, Response} from "express";
-import {ErrorApi} from "../utils/ErrorApi";
+import {ErrorApi} from "./ErrorApi";
 import {ZodError} from "zod";
 import {StatusCodes} from "http-status-codes";
 

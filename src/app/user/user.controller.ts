@@ -8,7 +8,9 @@ class UserController {
     getUser = AsyncHandler(async (req,res) => {
         try {
             return ResponseApi<User>(res, StatusCodes.OK, "ok", req.user)
-        }catch (err) {}
+        }catch (err) {
+            throw err;
+        }
     })
 }
 

@@ -2,8 +2,8 @@ import express, {Express} from 'express'
 import cookieParser from 'cookie-parser'
 import cors from "cors"
 import http from 'http'
-import ErrorHandler from "./middleware/ErrorHandler";
-import NotFoundHandler from "./middleware/NotFound";
+import ErrorHandler from "./middleware/error/ErrorHandler";
+import NotFoundHandler from "./middleware/error/NotFound";
 import {Server} from "node:http";
 import authRouter from "./app/auth/auth.router";
 import userRouter from "./app/user/user.router";
