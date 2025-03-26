@@ -24,3 +24,5 @@ dist-ssr
 
 # environment variables
 .env.development
+
+public
