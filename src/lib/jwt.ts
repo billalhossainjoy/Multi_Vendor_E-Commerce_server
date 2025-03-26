@@ -4,9 +4,9 @@ import {JWT_ACCESS_EXPIRY, JWT_ACCESS_SECRET, JWT_REFRESH_EXPIRY, JWT_REFRESH_SE
 
 
 class JWTService {
-    generateToken(id: string) {
+    generateToken(id: string, time?: ms.StringValue) {
         return jwt.sign({id}, JWT_VERIFY_TOKEN_SECRET, {
-            expiresIn: JWT_VERIFY_TOKEN_EXPIRY as ms.StringValue
+            expiresIn:time || JWT_VERIFY_TOKEN_EXPIRY as ms.StringValue
         })
     }
 

@@ -17,10 +17,11 @@ class AuthRouter extends AuthController{
         this.router.route("/signup").post(this.multer.upload.single("avatar"), this.signUp.bind(this));
         this.router.route("/login").post(this.login.bind(this));
         this.router.route("/logout").get(Protected(),this.logout.bind(this));
+        this.router.route("/forgotten/new").post(this.forgotPassword.bind(this));
+        this.router.route("/forgotten/token/:token").post(this.resetPassword.bind(this));
         this.router.route("/refresh-token").get(Protected(),this.refreshToken.bind(this));
         this.router.route("/verify-account/:token").get(Protected(),this.verifyUser.bind(this));
         this.router.route("/verify-account/new/token").get(Protected(),this.newVerifyToken.bind(this));
-
     }
 }
 

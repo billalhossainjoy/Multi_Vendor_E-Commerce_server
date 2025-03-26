@@ -1,5 +1,5 @@
 import UserModel, {User} from "./user.model";
-import {ErrorApi} from "../../utils/ErrorApi";
+import {ErrorApi} from "../../middleware/error/ErrorApi";
 import {StatusCodes} from "http-status-codes";
 
 class UserService {
